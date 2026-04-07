@@ -1,14 +1,12 @@
 name: Stacker
-description: A no-code platform for building custom business applications and workflows
-  with data from multiple sources, featuring drag-and-drop interface builders and
-  automated processes.
+description: A no-code platform for building custom business applications and workflows with data from multiple sources, featuring drag-and-drop interface builders and automated processes.
 url: https://www.stackerhq.com/
 tags:
-- No-Code
-- Low-Code
-- Application Development
-- Workflow Automation
-- Database
+  - Application Development
+  - Database
+  - Low-Code
+  - No-Code
+  - Workflow Automation
 created: '2025'
 modified: '2026-03-16'
 apis: []
