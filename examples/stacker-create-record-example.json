@@ -1,0 +1,30 @@
+{
+  "title": "Create Record Example",
+  "description": "Create a new customer record in a Stacker object",
+  "request": {
+    "method": "POST",
+    "url": "https://api.go.stackerhq.com/api/external/objects/obj_customers/records/",
+    "headers": {
+      "X-Integration-Key": "{{STACKER_INTEGRATION_KEY}}",
+      "X-Account-Id": "acc_12345",
+      "X-Stack-Id": "stk_67890",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "company_name": "New Customer Inc",
+      "contact_email": "hello@newcustomer.com",
+      "status": "active",
+      "plan": "starter"
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "sid": "rec_xyz789",
+      "company_name": "New Customer Inc",
+      "contact_email": "hello@newcustomer.com",
+      "status": "active",
+      "plan": "starter"
+    }
+  }
+}

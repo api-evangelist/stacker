@@ -1,0 +1,239 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Stacker Data Management"
+  description: >-
+    Unified workflow capability for managing data within Stacker no-code
+    applications. Covers account and stack discovery, object (table) inspection,
+    and full record lifecycle operations including search, create, update,
+    delete, and bulk upsert. Designed for developers, data teams, and
+    automation engineers building integrations on top of Stacker portals.
+  tags:
+    - No-Code
+    - Records
+    - Data Management
+    - Portals
+    - Application Development
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      STACKER_INTEGRATION_KEY: STACKER_INTEGRATION_KEY
+
+capability:
+  consumes:
+    - import: stacker
+      location: ./shared/stacker-api.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: stacker-data-api
+      description: "Unified REST API for Stacker data management."
+      resources:
+        - path: /v1/accounts
+          name: accounts
+          description: "Stacker accounts"
+          operations:
+            - method: GET
+              name: list-accounts
+              description: "List all accounts accessible by the integration key"
+              call: "stacker.list-accounts"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/stacks/{stack_id}/objects
+          name: objects
+          description: "Objects (tables) in a Stacker stack"
+          operations:
+            - method: GET
+              name: list-objects
+              description: "List all objects for a given stack"
+              call: "stacker.list-objects"
+              with:
+                X-Stack-Id: "rest.stack_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/stacks/{stack_id}/objects/{object_sid}/records
+          name: records
+          description: "Records within a Stacker object"
+          operations:
+            - method: POST
+              name: search-records
+              description: "Search and filter records"
+              call: "stacker.search-records"
+              with:
+                object_sid: "rest.object_sid"
+                X-Stack-Id: "rest.stack_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-record
+              description: "Create a new record"
+              call: "stacker.create-record"
+              with:
+                object_sid: "rest.object_sid"
+                X-Stack-Id: "rest.stack_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/stacks/{stack_id}/objects/{object_sid}/records/{record_sid}
+          name: record
+          description: "Single record operations"
+          operations:
+            - method: GET
+              name: get-record
+              description: "Get a record by SID"
+              call: "stacker.get-record"
+              with:
+                object_sid: "rest.object_sid"
+                record_sid: "rest.record_sid"
+                X-Stack-Id: "rest.stack_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: PATCH
+              name: update-record
+              description: "Update record fields"
+              call: "stacker.update-record"
+              with:
+                object_sid: "rest.object_sid"
+                record_sid: "rest.record_sid"
+                X-Stack-Id: "rest.stack_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: delete-record
+              description: "Delete a record"
+              call: "stacker.delete-record"
+              with:
+                object_sid: "rest.object_sid"
+                record_sid: "rest.record_sid"
+                X-Stack-Id: "rest.stack_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/stacks/{stack_id}/objects/{object_sid}/bulk-records
+          name: bulk-records
+          description: "Bulk record operations"
+          operations:
+            - method: POST
+              name: bulk-upsert-records
+              description: "Create or update up to 1000 records"
+              call: "stacker.bulk-upsert-records"
+              with:
+                object_sid: "rest.object_sid"
+                X-Stack-Id: "rest.stack_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: stacker-data-mcp
+      transport: http
+      description: "MCP server for AI-assisted Stacker data management."
+      tools:
+        - name: list-accounts
+          description: "List all Stacker accounts accessible via the integration key"
+          hints:
+            readOnly: true
+          call: "stacker.list-accounts"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-objects
+          description: "List all objects (tables) in a Stacker application stack"
+          hints:
+            readOnly: true
+          call: "stacker.list-objects"
+          with:
+            X-Account-Id: "tools.account_id"
+            X-Stack-Id: "tools.stack_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: search-records
+          description: "Search, filter, and paginate records within a Stacker object"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "stacker.search-records"
+          with:
+            object_sid: "tools.object_sid"
+            search: "tools.search"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-record
+          description: "Get a single Stacker record by SID"
+          hints:
+            readOnly: true
+          call: "stacker.get-record"
+          with:
+            object_sid: "tools.object_sid"
+            record_sid: "tools.record_sid"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: create-record
+          description: "Create a new record in a Stacker object"
+          hints:
+            readOnly: false
+          call: "stacker.create-record"
+          with:
+            object_sid: "tools.object_sid"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: update-record
+          description: "Update one or more fields on an existing Stacker record"
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "stacker.update-record"
+          with:
+            object_sid: "tools.object_sid"
+            record_sid: "tools.record_sid"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: delete-record
+          description: "Permanently delete a Stacker record"
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "stacker.delete-record"
+          with:
+            object_sid: "tools.object_sid"
+            record_sid: "tools.record_sid"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: bulk-upsert-records
+          description: "Create or update up to 1000 Stacker records in a single operation"
+          hints:
+            readOnly: false
+          call: "stacker.bulk-upsert-records"
+          with:
+            object_sid: "tools.object_sid"
+          outputParameters:
+            - type: object
+              mapping: "$."

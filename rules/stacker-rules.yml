@@ -1,0 +1,80 @@
+rules:
+  stacker-operation-ids:
+    description: All operations must have an operationId in camelCase
+    message: 'Operation must have a camelCase operationId: {{path}}'
+    severity: error
+    given: '$.paths[*][*]'
+    then:
+      field: operationId
+      function: truthy
+
+  stacker-tags-required:
+    description: All operations must have at least one tag
+    message: 'Operation at {{path}} must have at least one tag'
+    severity: error
+    given: '$.paths[*][*]'
+    then:
+      field: tags
+      function: truthy
+
+  stacker-trailing-slash:
+    description: All Stacker API paths end with a trailing slash
+    message: 'Stacker API path {{path}} must end with a trailing slash'
+    severity: warn
+    given: '$.paths[*]~'
+    then:
+      function: pattern
+      functionOptions:
+        match: '/$'
+
+  stacker-header-auth:
+    description: Operations must use IntegrationKey security scheme
+    message: 'Operation at {{path}} must declare security with IntegrationKey'
+    severity: warn
+    given: '$.paths[*][*]'
+    then:
+      field: security
+      function: truthy
+
+  stacker-response-200-or-201:
+    description: All operations must have a 200 or 201 success response
+    message: 'Operation at {{path}} must define a 200 or 201 response'
+    severity: error
+    given: '$.paths[*][*].responses'
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: ['200']
+            - required: ['201']
+            - required: ['204']
+
+  stacker-object-sid-path-param:
+    description: Paths using object SID must name the parameter object_sid
+    message: 'Object SID path parameter should be named object_sid'
+    severity: warn
+    given: "$.paths[*][*].parameters[?(@.in=='path')]"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          if:
+            properties:
+              description:
+                pattern: object
+          then:
+            properties:
+              name:
+                pattern: '^object_sid$'
+
+  stacker-content-type-json:
+    description: Request bodies must use application/json
+    message: 'Request body at {{path}} should use application/json content type'
+    severity: warn
+    given: '$.paths[*][*].requestBody.content'
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          required: ['application/json']

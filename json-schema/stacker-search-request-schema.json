@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api.go.stackerhq.com/schemas/search-request",
+  "title": "Stacker Search Request",
+  "description": "Request body for searching records in a Stacker object",
+  "type": "object",
+  "properties": {
+    "search": {
+      "type": "string",
+      "description": "Full-text search string applied across search_fields"
+    },
+    "search_fields": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Field API names to search within"
+    },
+    "include_fields": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Field API names to include in the response"
+    },
+    "count": {
+      "type": "integer",
+      "default": 1000,
+      "description": "Maximum number of records to return"
+    },
+    "start": {
+      "type": "integer",
+      "default": 0,
+      "description": "Pagination offset"
+    },
+    "order_by": {
+      "type": "string",
+      "description": "Field API name to sort results by"
+    },
+    "filters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "target": { "type": "string", "description": "Field API name to filter on" },
+          "operation": { "type": "string", "description": "Comparison operator (eq, neq, contains, gt, lt)" },
+          "value": { "description": "Value to compare against" }
+        },
+        "required": ["target", "operation"]
+      },
+      "description": "Array of filter conditions"
+    }
+  }
+}

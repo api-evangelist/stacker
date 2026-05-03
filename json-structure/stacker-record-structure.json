@@ -1,0 +1,14 @@
+{
+  "title": "Stacker Record",
+  "description": "Structure of a Stacker record returned by the API",
+  "type": "object",
+  "fields": [
+    {
+      "name": "sid",
+      "type": "string",
+      "description": "Unique system identifier for the record",
+      "required": true
+    }
+  ],
+  "notes": "Additional fields depend on the object (table) definition in the Stacker application. Field keys are the field API names configured in Stacker."
+}

@@ -1,0 +1,513 @@
+openapi: 3.0.1
+info:
+  title: Stacker API
+  description: >-
+    The Stacker API provides programmatic access to objects, records, accounts,
+    and stacks within the Stacker no-code platform. It enables external
+    integrations, automation workflows, and data operations across Stacker
+    applications. Authentication uses an integration key passed via the
+    X-Integration-Key request header.
+  version: 1.0.0
+  contact:
+    url: https://stacker.ai/
+  termsOfService: https://stacker.ai/terms
+servers:
+  - url: https://api.go.stackerhq.com
+    description: Stacker API
+security:
+  - IntegrationKey: []
+tags:
+  - name: Hello
+    description: Health check and connectivity test
+  - name: Accounts
+    description: Manage Stacker accounts
+  - name: Objects
+    description: Manage objects (tables) within a stack
+  - name: Records
+    description: CRUD operations on records within an object
+paths:
+  /api/external/hello/:
+    get:
+      operationId: getHello
+      summary: Hello World
+      description: Health check endpoint. Does not require Account ID header.
+      tags:
+        - Hello
+      security:
+        - IntegrationKey: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: hello
+  /api/external/accounts/:
+    get:
+      operationId: listAccounts
+      summary: List Accounts
+      description: >-
+        Returns a list of accounts accessible by the authenticated integration
+        key. Does not require the X-Account-Id header.
+      tags:
+        - Accounts
+      security:
+        - IntegrationKey: []
+      responses:
+        '200':
+          description: List of accounts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accounts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Account'
+  /api/external/objects/:
+    get:
+      operationId: listObjects
+      summary: List Objects
+      description: Returns the list of objects (tables) associated with the specified account and stack.
+      tags:
+        - Objects
+      security:
+        - IntegrationKey: []
+      parameters:
+        - name: X-Account-Id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: The Stacker account ID
+        - name: X-Stack-Id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: The Stacker stack (application) ID
+      responses:
+        '200':
+          description: List of objects
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  objects:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/StackObject'
+  /api/external/objects/{object_sid}/action-buttons/:
+    get:
+      operationId: listActionButtons
+      summary: List Action Buttons
+      description: Returns the list of action buttons configured for a given object.
+      tags:
+        - Objects
+      security:
+        - IntegrationKey: []
+      parameters:
+        - name: object_sid
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The object SID
+        - name: X-Account-Id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: The Stacker account ID
+        - name: X-Stack-Id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: The Stacker stack ID
+      responses:
+        '200':
+          description: List of action buttons
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  action_buttons:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ActionButton'
+  /api/external/objects/{object_sid}/search/:
+    post:
+      operationId: searchRecords
+      summary: Search Records
+      description: >-
+        Returns a paginated list of records within the specified object. Supports
+        filtering, sorting, field selection, and full-text search. Returns JSON
+        by default; set Accept: text/csv to receive CSV output.
+      tags:
+        - Records
+      security:
+        - IntegrationKey: []
+      parameters:
+        - name: object_sid
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The object SID
+        - name: X-Account-Id
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: X-Stack-Id
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: List of records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecordListResponse'
+            text/csv:
+              schema:
+                type: string
+  /api/external/objects/{object_sid}/records/:
+    post:
+      operationId: createRecord
+      summary: Create Record
+      description: Creates a new record in the specified object.
+      tags:
+        - Records
+      security:
+        - IntegrationKey: []
+      parameters:
+        - name: object_sid
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The object SID
+        - name: X-Account-Id
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: X-Stack-Id
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecordCreateRequest'
+      responses:
+        '201':
+          description: Created record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Record'
+  /api/external/objects/{object_sid}/records/{record_sid}/:
+    get:
+      operationId: getRecord
+      summary: Get Record
+      description: Returns a single record by its SID.
+      tags:
+        - Records
+      security:
+        - IntegrationKey: []
+      parameters:
+        - name: object_sid
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: record_sid
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: include_fields
+          in: query
+          required: false
+          schema:
+            type: string
+          description: JSON array string of field API names to include in response
+        - name: X-Account-Id
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: X-Stack-Id
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Record object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Record'
+    patch:
+      operationId: updateRecord
+      summary: Update Record
+      description: Partially updates a record. Only provided fields are updated.
+      tags:
+        - Records
+      security:
+        - IntegrationKey: []
+      parameters:
+        - name: object_sid
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: record_sid
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Account-Id
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: X-Stack-Id
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecordUpdateRequest'
+      responses:
+        '200':
+          description: Updated record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Record'
+    delete:
+      operationId: deleteRecord
+      summary: Delete Record
+      description: Deletes a record by its SID.
+      tags:
+        - Records
+      security:
+        - IntegrationKey: []
+      parameters:
+        - name: object_sid
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: record_sid
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Account-Id
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: X-Stack-Id
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Record deleted
+  /api/external/objects/{object_sid}/bulk-records/:
+    post:
+      operationId: bulkUpsertRecords
+      summary: Bulk Upsert Records
+      description: >-
+        Creates and updates up to 1000 records in a single request. Each record
+        is provided as a JSON object with field API names as keys.
+      tags:
+        - Records
+      security:
+        - IntegrationKey: []
+      parameters:
+        - name: object_sid
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Account-Id
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: X-Stack-Id
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
+              maxItems: 1000
+      responses:
+        '200':
+          description: Bulk operation result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkUpsertResponse'
+components:
+  securitySchemes:
+    IntegrationKey:
+      type: apiKey
+      in: header
+      name: X-Integration-Key
+      description: Personal integration key from Account Settings > Integrations
+  schemas:
+    Account:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Account identifier
+        name:
+          type: string
+          description: Account display name
+    StackObject:
+      type: object
+      properties:
+        sid:
+          type: string
+          description: Object system identifier
+        name:
+          type: string
+          description: Object display name
+        api_name:
+          type: string
+          description: Object API name used in endpoints
+    ActionButton:
+      type: object
+      properties:
+        sid:
+          type: string
+          description: Action button identifier
+        name:
+          type: string
+          description: Button display name
+    Record:
+      type: object
+      properties:
+        sid:
+          type: string
+          description: Record system identifier
+      additionalProperties: true
+    RecordCreateRequest:
+      type: object
+      description: >-
+        Key-value pairs where keys are field API names and values are the field
+        values. Optionally include include_fields to filter the response.
+      additionalProperties: true
+    RecordUpdateRequest:
+      type: object
+      description: >-
+        Key-value pairs for fields to update. Only specified fields are modified.
+      additionalProperties: true
+    SearchRequest:
+      type: object
+      properties:
+        search:
+          type: string
+          description: String to filter records by across specified search fields
+        search_fields:
+          type: array
+          items:
+            type: string
+          description: Field API names to run the search against
+        include_fields:
+          type: array
+          items:
+            type: string
+          description: Field API names to include in the response
+        count:
+          type: integer
+          default: 1000
+          description: Number of records to return
+        start:
+          type: integer
+          default: 0
+          description: Offset for pagination
+        order_by:
+          type: string
+          description: Field API name to order results by
+        filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/SearchFilter'
+    SearchFilter:
+      type: object
+      properties:
+        target:
+          type: string
+          description: Field API name to filter on
+        operation:
+          type: string
+          description: Comparison operator (e.g., eq, neq, contains, gt, lt)
+        value:
+          description: Value to compare against
+    RecordListResponse:
+      type: object
+      properties:
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/Record'
+        total:
+          type: integer
+        count:
+          type: integer
+        start:
+          type: integer
+    BulkUpsertResponse:
+      type: object
+      properties:
+        created:
+          type: array
+          items:
+            type: string
+          description: SIDs of created records
+        updated:
+          type: array
+          items:
+            type: string
+          description: SIDs of updated records

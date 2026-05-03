@@ -1,0 +1,84 @@
+vocabulary:
+  name: Stacker
+  description: Domain vocabulary for the Stacker no-code platform API
+  terms:
+    - term: Stack
+      definition: >-
+        A Stacker application — a collection of objects, views, and workflows
+        built on top of a connected data source. Identified by a Stack ID.
+      aliases:
+        - Application
+        - App
+
+    - term: Object
+      definition: >-
+        A logical table or collection within a Stacker stack, corresponding to
+        a data source table (e.g., an Airtable base, Google Sheet, or SQL table).
+        Identified by an object SID (system identifier).
+      aliases:
+        - Table
+        - Entity
+
+    - term: Record
+      definition: >-
+        A single row or data entry within a Stacker object. Records are created,
+        read, updated, and deleted via the Stacker API. Identified by a record SID.
+      aliases:
+        - Row
+        - Entry
+
+    - term: Field
+      definition: >-
+        A column within a Stacker object. Each field has an API name (field_api_name)
+        used as the key in JSON payloads.
+      aliases:
+        - Column
+        - Attribute
+
+    - term: Integration Key
+      definition: >-
+        A personal API token tied to a Stacker user account. Passed in the
+        X-Integration-Key request header to authenticate API requests. Grants the
+        same permissions as the associated user.
+      aliases:
+        - API Key
+        - Token
+
+    - term: Account
+      definition: >-
+        A Stacker organizational account, representing a team or workspace.
+        Identified by an Account ID, passed in the X-Account-Id header.
+      aliases:
+        - Workspace
+        - Organization
+
+    - term: Action Button
+      definition: >-
+        A configured UI action within a Stacker object that can trigger workflows,
+        automations, or webhook calls when invoked.
+      aliases:
+        - Button
+        - Automation Trigger
+
+    - term: SID
+      definition: >-
+        System Identifier — a stable, opaque string uniquely identifying a
+        Stacker resource (object, record, or account).
+      aliases:
+        - System ID
+        - Resource ID
+
+    - term: Bulk Upsert
+      definition: >-
+        An operation that creates or updates multiple records in a single API
+        call, supporting up to 1000 records per request.
+      aliases:
+        - Batch Write
+        - Bulk Import
+
+    - term: Stack ID
+      definition: >-
+        The unique identifier for a Stacker application (stack). Passed in the
+        X-Stack-Id header to scope API operations to a specific application.
+      aliases:
+        - Application ID

@@ -1,0 +1,45 @@
+{
+  "title": "Search Records Example",
+  "description": "Search for active customer records in a Stacker object",
+  "request": {
+    "method": "POST",
+    "url": "https://api.go.stackerhq.com/api/external/objects/obj_customers/search/",
+    "headers": {
+      "X-Integration-Key": "{{STACKER_INTEGRATION_KEY}}",
+      "X-Account-Id": "acc_12345",
+      "X-Stack-Id": "stk_67890",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "search": "acme",
+      "search_fields": ["company_name", "contact_email"],
+      "include_fields": ["company_name", "contact_email", "status", "plan"],
+      "count": 50,
+      "start": 0,
+      "filters": [
+        {
+          "target": "status",
+          "operation": "eq",
+          "value": "active"
+        }
+      ]
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "records": [
+        {
+          "sid": "rec_abc123",
+          "company_name": "Acme Corp",
+          "contact_email": "billing@acme.com",
+          "status": "active",
+          "plan": "enterprise"
+        }
+      ],
+      "total": 1,
+      "count": 1,
+      "start": 0
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api.go.stackerhq.com/schemas/record",
+  "title": "Stacker Record",
+  "description": "A record within a Stacker object (table). Field names and types vary per object definition.",
+  "type": "object",
+  "properties": {
+    "sid": {
+      "type": "string",
+      "description": "Unique system identifier for the record"
+    }
+  },
+  "additionalProperties": true
+}

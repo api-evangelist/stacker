@@ -1,0 +1,28 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "stacker": "https://api.go.stackerhq.com/schema/",
+    "sid": "stacker:systemIdentifier",
+    "object_sid": "stacker:objectIdentifier",
+    "record_sid": "stacker:recordIdentifier",
+    "stack_id": "stacker:stackIdentifier",
+    "account_id": "stacker:accountIdentifier",
+    "field_api_name": "stacker:fieldApiName",
+    "StackObject": {
+      "@id": "stacker:Object",
+      "@type": "@id"
+    },
+    "Record": {
+      "@id": "stacker:Record",
+      "@type": "@id"
+    },
+    "Account": {
+      "@id": "schema:Organization",
+      "@type": "@id"
+    },
+    "name": "schema:name",
+    "description": "schema:description",
+    "created": "schema:dateCreated",
+    "modified": "schema:dateModified"
+  }
+}
