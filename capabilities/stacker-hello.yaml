@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Stacker API — Hello
+  description: 'Stacker API — Hello. 1 operations. Lead operation: Hello World. Self-contained Naftiko capability covering
+    one Stacker business surface.'
+  tags:
+  - Stacker
+  - Hello
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    STACKER_API_KEY: STACKER_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: stacker-hello
+    baseUri: https://api.go.stackerhq.com
+    description: Stacker API — Hello business capability. Self-contained, no shared references.
+    resources:
+    - name: api-external-hello
+      path: /api/external/hello/
+      operations:
+      - name: gethello
+        method: GET
+        description: Hello World
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: X-Integration-Key
+      value: '{{env.STACKER_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: stacker-hello-rest
+    port: 8080
+    description: REST adapter for Stacker API — Hello. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/api/external/hello
+      name: api-external-hello
+      description: REST surface for api-external-hello.
+      operations:
+      - method: GET
+        name: gethello
+        description: Hello World
+        call: stacker-hello.gethello
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: stacker-hello-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Stacker API — Hello. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: hello-world
+      description: Hello World
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: stacker-hello.gethello
+      outputParameters:
+      - type: object
+        mapping: $.
