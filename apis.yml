@@ -68,6 +68,8 @@ common:
 - type: Login
   url: https://app.stackerhq.com/
   name: Stacker App Login
+- type: LLMsTxt
+  url: https://api.go.stackerhq.com/llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
