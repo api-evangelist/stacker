@@ -1,0 +1,389 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stacker API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Integration-Key",
+      "value": "{{X-Integration-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Hello",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Hello World",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.go.stackerhq.com/api/external/hello/",
+            "auth": {
+              "type": "apikey",
+              "key": "X-Integration-Key",
+              "value": "{{X-Integration-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Health check endpoint. Does not require Account ID header."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.go.stackerhq.com/api/external/accounts/",
+            "auth": {
+              "type": "apikey",
+              "key": "X-Integration-Key",
+              "value": "{{X-Integration-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a list of accounts accessible by the authenticated integration key. Does not require the X-Account-Id header."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Objects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.go.stackerhq.com/api/external/objects/",
+            "headers": [
+              {
+                "name": "X-Account-Id",
+                "value": ""
+              },
+              {
+                "name": "X-Stack-Id",
+                "value": ""
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Integration-Key",
+              "value": "{{X-Integration-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the list of objects (tables) associated with the specified account and stack."
+        },
+        {
+          "info": {
+            "name": "List Action Buttons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.go.stackerhq.com/api/external/objects/:object_sid/action-buttons/",
+            "headers": [
+              {
+                "name": "X-Account-Id",
+                "value": ""
+              },
+              {
+                "name": "X-Stack-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "object_sid",
+                "value": "",
+                "type": "path",
+                "description": "The object SID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Integration-Key",
+              "value": "{{X-Integration-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the list of action buttons configured for a given object."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Records",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.go.stackerhq.com/api/external/objects/:object_sid/search/",
+            "headers": [
+              {
+                "name": "X-Account-Id",
+                "value": ""
+              },
+              {
+                "name": "X-Stack-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "object_sid",
+                "value": "",
+                "type": "path",
+                "description": "The object SID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Integration-Key",
+              "value": "{{X-Integration-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a paginated list of records within the specified object. Supports filtering, sorting, field selection, and full-text search. Returns JSON by default; set Accept: text/csv to receive CSV output."
+        },
+        {
+          "info": {
+            "name": "Create Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.go.stackerhq.com/api/external/objects/:object_sid/records/",
+            "headers": [
+              {
+                "name": "X-Account-Id",
+                "value": ""
+              },
+              {
+                "name": "X-Stack-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "object_sid",
+                "value": "",
+                "type": "path",
+                "description": "The object SID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Integration-Key",
+              "value": "{{X-Integration-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new record in the specified object."
+        },
+        {
+          "info": {
+            "name": "Get Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.go.stackerhq.com/api/external/objects/:object_sid/records/:record_sid/",
+            "headers": [
+              {
+                "name": "X-Account-Id",
+                "value": ""
+              },
+              {
+                "name": "X-Stack-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "object_sid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "record_sid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include_fields",
+                "value": "",
+                "type": "query",
+                "description": "JSON array string of field API names to include in response"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Integration-Key",
+              "value": "{{X-Integration-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a single record by its SID."
+        },
+        {
+          "info": {
+            "name": "Update Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.go.stackerhq.com/api/external/objects/:object_sid/records/:record_sid/",
+            "headers": [
+              {
+                "name": "X-Account-Id",
+                "value": ""
+              },
+              {
+                "name": "X-Stack-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "object_sid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "record_sid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Integration-Key",
+              "value": "{{X-Integration-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Partially updates a record. Only provided fields are updated."
+        },
+        {
+          "info": {
+            "name": "Delete Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.go.stackerhq.com/api/external/objects/:object_sid/records/:record_sid/",
+            "headers": [
+              {
+                "name": "X-Account-Id",
+                "value": ""
+              },
+              {
+                "name": "X-Stack-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "object_sid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "record_sid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Integration-Key",
+              "value": "{{X-Integration-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a record by its SID."
+        },
+        {
+          "info": {
+            "name": "Bulk Upsert Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.go.stackerhq.com/api/external/objects/:object_sid/bulk-records/",
+            "headers": [
+              {
+                "name": "X-Account-Id",
+                "value": ""
+              },
+              {
+                "name": "X-Stack-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "object_sid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Integration-Key",
+              "value": "{{X-Integration-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates and updates up to 1000 records in a single request. Each record is provided as a JSON object with field API names as keys."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
