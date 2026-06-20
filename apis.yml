@@ -6,7 +6,7 @@ description: >-
   Salesforce — without writing code. Its drag-and-drop interface, role-based access controls, and Open API enable teams
   to create data-driven portals, automate workflows, and integrate with third-party services.
 url: https://raw.githubusercontent.com/api-evangelist/stacker/refs/heads/main/apis.yml
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Application Development
   - Low-Code
