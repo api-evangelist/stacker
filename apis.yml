@@ -62,7 +62,7 @@ common:
   - type: Login
     url: https://app.stackerhq.com/
     name: Stacker App Login
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://api.go.stackerhq.com/llms.txt
 maintainers:
   - FN: Kin Lane
