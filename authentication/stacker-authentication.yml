@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/stacker-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: IntegrationKey
+  type: apiKey
+  in: header
+  parameter: X-Integration-Key
+  description: Personal integration key from Account Settings > Integrations
+  sources:
+  - openapi/stacker-openapi.yml

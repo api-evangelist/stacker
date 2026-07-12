@@ -39,6 +39,10 @@ apis:
       - type: OpenAPI
         url: https://raw.githubusercontent.com/api-evangelist/stacker/refs/heads/main/openapi/stacker-openapi.yml
 common:
+  - type: DomainSecurity
+    url: security/stacker-domain-security.yml
+  - type: Authentication
+    url: authentication/stacker-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/stackermedia
   - type: Website
