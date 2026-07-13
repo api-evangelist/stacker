@@ -2,13 +2,14 @@
   "repo": "stacker",
   "feeds": [
     {
-      "source": "https://stacker.ai/blog",
-      "feed_url": "",
+      "source": "https://stacker.ai/pricing",
+      "feed_url": "https://stacker.ai/pricing",
+      "title": "",
       "saved": 0,
-      "method": "agent-scrape"
+      "method": "none"
     }
   ],
-  "post_count": 10,
-  "fetched": "2026-06-27T13:11:59Z",
-  "agent_pulled": "2026-06-27"
+  "post_count": 34,
+  "fetched": "2026-07-11T11:50:51Z",
+  "agent_pulled": "2026-07-04"
 }
