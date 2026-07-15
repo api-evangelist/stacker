@@ -39,6 +39,8 @@ apis:
       - type: OpenAPI
         url: https://raw.githubusercontent.com/api-evangelist/stacker/refs/heads/main/openapi/stacker-openapi.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/stacker-agentic-access.yml
   - type: DomainSecurity
     url: security/stacker-domain-security.yml
   - type: Authentication
