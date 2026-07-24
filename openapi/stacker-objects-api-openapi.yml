@@ -1,0 +1,120 @@
+openapi: 3.0.1
+info:
+  title: Stacker Accounts Objects API
+  description: The Stacker API provides programmatic access to objects, records, accounts, and stacks within the Stacker no-code platform. It enables external integrations, automation workflows, and data operations across Stacker applications. Authentication uses an integration key passed via the X-Integration-Key request header.
+  version: 1.0.0
+  contact:
+    url: https://stacker.ai/
+  termsOfService: https://stacker.ai/terms
+servers:
+- url: https://api.go.stackerhq.com
+  description: Stacker API
+security:
+- IntegrationKey: []
+tags:
+- name: Objects
+  description: Manage objects (tables) within a stack
+paths:
+  /api/external/objects/:
+    get:
+      operationId: listObjects
+      summary: List Objects
+      description: Returns the list of objects (tables) associated with the specified account and stack.
+      tags:
+      - Objects
+      security:
+      - IntegrationKey: []
+      parameters:
+      - name: X-Account-Id
+        in: header
+        required: true
+        schema:
+          type: string
+        description: The Stacker account ID
+      - name: X-Stack-Id
+        in: header
+        required: true
+        schema:
+          type: string
+        description: The Stacker stack (application) ID
+      responses:
+        '200':
+          description: List of objects
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  objects:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/StackObject'
+  /api/external/objects/{object_sid}/action-buttons/:
+    get:
+      operationId: listActionButtons
+      summary: List Action Buttons
+      description: Returns the list of action buttons configured for a given object.
+      tags:
+      - Objects
+      security:
+      - IntegrationKey: []
+      parameters:
+      - name: object_sid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The object SID
+      - name: X-Account-Id
+        in: header
+        required: true
+        schema:
+          type: string
+        description: The Stacker account ID
+      - name: X-Stack-Id
+        in: header
+        required: true
+        schema:
+          type: string
+        description: The Stacker stack ID
+      responses:
+        '200':
+          description: List of action buttons
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  action_buttons:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ActionButton'
+components:
+  schemas:
+    StackObject:
+      type: object
+      properties:
+        sid:
+          type: string
+          description: Object system identifier
+        name:
+          type: string
+          description: Object display name
+        api_name:
+          type: string
+          description: Object API name used in endpoints
+    ActionButton:
+      type: object
+      properties:
+        sid:
+          type: string
+          description: Action button identifier
+        name:
+          type: string
+          description: Button display name
+  securitySchemes:
+    IntegrationKey:
+      type: apiKey
+      in: header
+      name: X-Integration-Key
+      description: Personal integration key from Account Settings > Integrations

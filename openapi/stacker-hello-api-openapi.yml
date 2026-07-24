@@ -1,0 +1,44 @@
+openapi: 3.0.1
+info:
+  title: Stacker Accounts Hello API
+  description: The Stacker API provides programmatic access to objects, records, accounts, and stacks within the Stacker no-code platform. It enables external integrations, automation workflows, and data operations across Stacker applications. Authentication uses an integration key passed via the X-Integration-Key request header.
+  version: 1.0.0
+  contact:
+    url: https://stacker.ai/
+  termsOfService: https://stacker.ai/terms
+servers:
+- url: https://api.go.stackerhq.com
+  description: Stacker API
+security:
+- IntegrationKey: []
+tags:
+- name: Hello
+  description: Health check and connectivity test
+paths:
+  /api/external/hello/:
+    get:
+      operationId: getHello
+      summary: Hello World
+      description: Health check endpoint. Does not require Account ID header.
+      tags:
+      - Hello
+      security:
+      - IntegrationKey: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: hello
+components:
+  securitySchemes:
+    IntegrationKey:
+      type: apiKey
+      in: header
+      name: X-Integration-Key
+      description: Personal integration key from Account Settings > Integrations
