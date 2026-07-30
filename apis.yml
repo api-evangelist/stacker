@@ -6,7 +6,20 @@ description: >-
   Salesforce — without writing code. Its drag-and-drop interface, role-based access controls, and Open API enable teams
   to create data-driven portals, automate workflows, and integrate with third-party services.
 url: https://raw.githubusercontent.com/api-evangelist/stacker/refs/heads/main/apis.yml
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/stacker.png
 tags:
   - Application Development
   - Low-Code
@@ -19,25 +32,62 @@ created: '2025-01-01'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: stacker:stacker-api
-    name: Stacker API
-    description: >-
-      The Stacker API provides programmatic access to objects, records, accounts, and stacks within the Stacker
-      platform. It enables external integrations, automation workflows, and data operations across Stacker applications
-      using token-based authentication.
-    humanURL: https://docs.stackerhq.com/stacker/ai-and-automations/open-api-overview
-    baseURL: https://api.go.stackerhq.com
-    tags:
-      - No-Code
-      - Records
-      - Application Development
-    properties:
-      - type: Documentation
-        url: https://docs.stackerhq.com/stacker/ai-and-automations/open-api-overview
-      - type: Authentication
-        url: https://docs.stackerhq.com/stacker/ai-and-automations/open-api-overview/authentication
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/stacker/refs/heads/main/openapi/stacker-openapi.yml
+- aid: stacker:stacker-accounts-api
+  name: Stacker Accounts API
+  description: Manage Stacker accounts
+  humanURL: https://docs.stackerhq.com/stacker/ai-and-automations/open-api-overview
+  baseURL: https://api.go.stackerhq.com
+  tags:
+  - Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/stacker-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.stackerhq.com/stacker/ai-and-automations/open-api-overview
+  - type: Authentication
+    url: https://docs.stackerhq.com/stacker/ai-and-automations/open-api-overview/authentication
+- aid: stacker:stacker-hello-api
+  name: Stacker Hello API
+  description: Health check and connectivity test
+  humanURL: https://docs.stackerhq.com/stacker/ai-and-automations/open-api-overview
+  baseURL: https://api.go.stackerhq.com
+  tags:
+  - Hello
+  properties:
+  - type: OpenAPI
+    url: openapi/stacker-hello-api-openapi.yml
+  - type: Documentation
+    url: https://docs.stackerhq.com/stacker/ai-and-automations/open-api-overview
+  - type: Authentication
+    url: https://docs.stackerhq.com/stacker/ai-and-automations/open-api-overview/authentication
+- aid: stacker:stacker-objects-api
+  name: Stacker Objects API
+  description: Manage objects (tables) within a stack
+  humanURL: https://docs.stackerhq.com/stacker/ai-and-automations/open-api-overview
+  baseURL: https://api.go.stackerhq.com
+  tags:
+  - Objects
+  properties:
+  - type: OpenAPI
+    url: openapi/stacker-objects-api-openapi.yml
+  - type: Documentation
+    url: https://docs.stackerhq.com/stacker/ai-and-automations/open-api-overview
+  - type: Authentication
+    url: https://docs.stackerhq.com/stacker/ai-and-automations/open-api-overview/authentication
+- aid: stacker:stacker-records-api
+  name: Stacker Records API
+  description: CRUD operations on records within an object
+  humanURL: https://docs.stackerhq.com/stacker/ai-and-automations/open-api-overview
+  baseURL: https://api.go.stackerhq.com
+  tags:
+  - Records
+  properties:
+  - type: OpenAPI
+    url: openapi/stacker-records-api-openapi.yml
+  - type: Documentation
+    url: https://docs.stackerhq.com/stacker/ai-and-automations/open-api-overview
+  - type: Authentication
+    url: https://docs.stackerhq.com/stacker/ai-and-automations/open-api-overview/authentication
 common:
   - type: AgenticAccess
     url: agentic-access/stacker-agentic-access.yml
