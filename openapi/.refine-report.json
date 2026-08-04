@@ -1,0 +1,20 @@
+{
+  "provider": "stacker",
+  "sources": [
+    "stacker-accounts-api-openapi.yml",
+    "stacker-hello-api-openapi.yml",
+    "stacker-objects-api-openapi.yml",
+    "stacker-records-api-openapi.yml"
+  ],
+  "outputs": [
+    "stacker-accounts-api-openapi.yml",
+    "stacker-hello-api-openapi.yml",
+    "stacker-objects-api-openapi.yml",
+    "stacker-records-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
