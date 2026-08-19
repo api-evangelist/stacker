@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stacker Accounts Objects API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Integration-Key",
+      "value": "{{X-Integration-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Objects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.go.stackerhq.com/api/external/objects/",
+            "headers": [
+              {
+                "name": "X-Account-Id",
+                "value": ""
+              },
+              {
+                "name": "X-Stack-Id",
+                "value": ""
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Integration-Key",
+              "value": "{{X-Integration-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the list of objects (tables) associated with the specified account and stack."
+        },
+        {
+          "info": {
+            "name": "List Action Buttons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.go.stackerhq.com/api/external/objects/:object_sid/action-buttons/",
+            "headers": [
+              {
+                "name": "X-Account-Id",
+                "value": ""
+              },
+              {
+                "name": "X-Stack-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "object_sid",
+                "value": "",
+                "type": "path",
+                "description": "The object SID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Integration-Key",
+              "value": "{{X-Integration-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the list of action buttons configured for a given object."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

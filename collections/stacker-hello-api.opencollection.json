@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stacker Accounts Hello API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Integration-Key",
+      "value": "{{X-Integration-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Hello",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Hello World",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.go.stackerhq.com/api/external/hello/",
+            "auth": {
+              "type": "apikey",
+              "key": "X-Integration-Key",
+              "value": "{{X-Integration-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Health check endpoint. Does not require Account ID header."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
