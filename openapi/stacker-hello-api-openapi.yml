@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Stacker Accounts Hello API
+  title: Stacker Hello API
   description: The Stacker API provides programmatic access to objects, records, accounts, and stacks within the Stacker no-code platform. It enables external integrations, automation workflows, and data operations across Stacker applications. Authentication uses an integration key passed via the X-Integration-Key request header.
   version: 1.0.0
   contact:

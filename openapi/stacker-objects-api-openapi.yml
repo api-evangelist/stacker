@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Stacker Accounts Objects API
+  title: Stacker Objects API
   description: The Stacker API provides programmatic access to objects, records, accounts, and stacks within the Stacker no-code platform. It enables external integrations, automation workflows, and data operations across Stacker applications. Authentication uses an integration key passed via the X-Integration-Key request header.
   version: 1.0.0
   contact:
@@ -91,6 +91,15 @@ paths:
                       $ref: '#/components/schemas/ActionButton'
 components:
   schemas:
+    ActionButton:
+      type: object
+      properties:
+        sid:
+          type: string
+          description: Action button identifier
+        name:
+          type: string
+          description: Button display name
     StackObject:
       type: object
       properties:
@@ -103,15 +112,6 @@ components:
         api_name:
           type: string
           description: Object API name used in endpoints
-    ActionButton:
-      type: object
-      properties:
-        sid:
-          type: string
-          description: Action button identifier
-        name:
-          type: string
-          description: Button display name
   securitySchemes:
     IntegrationKey:
       type: apiKey

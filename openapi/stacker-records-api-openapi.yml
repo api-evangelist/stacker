@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Stacker Accounts Records API
+  title: Stacker Records API
   description: The Stacker API provides programmatic access to objects, records, accounts, and stacks within the Stacker no-code platform. It enables external integrations, automation workflows, and data operations across Stacker applications. Authentication uses an integration key passed via the X-Integration-Key request header.
   version: 1.0.0
   contact:
@@ -256,6 +256,10 @@ paths:
                 $ref: '#/components/schemas/BulkUpsertResponse'
 components:
   schemas:
+    RecordCreateRequest:
+      type: object
+      description: Key-value pairs where keys are field API names and values are the field values. Optionally include include_fields to filter the response.
+      additionalProperties: true
     Record:
       type: object
       properties:
@@ -263,6 +267,32 @@ components:
           type: string
           description: Record system identifier
       additionalProperties: true
+    RecordListResponse:
+      type: object
+      properties:
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/Record'
+        total:
+          type: integer
+        count:
+          type: integer
+        start:
+          type: integer
+    BulkUpsertResponse:
+      type: object
+      properties:
+        created:
+          type: array
+          items:
+            type: string
+          description: SIDs of created records
+        updated:
+          type: array
+          items:
+            type: string
+          description: SIDs of updated records
     SearchRequest:
       type: object
       properties:
@@ -294,22 +324,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SearchFilter'
-    BulkUpsertResponse:
+    RecordUpdateRequest:
       type: object
-      properties:
-        created:
-          type: array
-          items:
-            type: string
-          description: SIDs of created records
-        updated:
-          type: array
-          items:
-            type: string
-          description: SIDs of updated records
-    RecordCreateRequest:
-      type: object
-      description: Key-value pairs where keys are field API names and values are the field values. Optionally include include_fields to filter the response.
+      description: Key-value pairs for fields to update. Only specified fields are modified.
       additionalProperties: true
     SearchFilter:
       type: object
@@ -322,23 +339,6 @@ components:
           description: Comparison operator (e.g., eq, neq, contains, gt, lt)
         value:
           description: Value to compare against
-    RecordUpdateRequest:
-      type: object
-      description: Key-value pairs for fields to update. Only specified fields are modified.
-      additionalProperties: true
-    RecordListResponse:
-      type: object
-      properties:
-        records:
-          type: array
-          items:
-            $ref: '#/components/schemas/Record'
-        total:
-          type: integer
-        count:
-          type: integer
-        start:
-          type: integer
   securitySchemes:
     IntegrationKey:
       type: apiKey
