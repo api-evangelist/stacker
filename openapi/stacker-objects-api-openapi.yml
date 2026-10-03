@@ -91,6 +91,15 @@ paths:
                       $ref: '#/components/schemas/ActionButton'
 components:
   schemas:
+    ActionButton:
+      type: object
+      properties:
+        sid:
+          type: string
+          description: Action button identifier
+        name:
+          type: string
+          description: Button display name
     StackObject:
       type: object
       properties:
@@ -103,15 +112,6 @@ components:
         api_name:
           type: string
           description: Object API name used in endpoints
-    ActionButton:
-      type: object
-      properties:
-        sid:
-          type: string
-          description: Action button identifier
-        name:
-          type: string
-          description: Button display name
   securitySchemes:
     IntegrationKey:
       type: apiKey

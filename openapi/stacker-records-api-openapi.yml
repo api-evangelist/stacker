@@ -256,37 +256,21 @@ paths:
                 $ref: '#/components/schemas/BulkUpsertResponse'
 components:
   schemas:
-    SearchRequest:
+    RecordCreateRequest:
+      type: object
+      description: Key-value pairs where keys are field API names and values are the field values. Optionally include include_fields to filter the response.
+      additionalProperties: true
+    Record:
       type: object
       properties:
-        search:
+        sid:
           type: string
-          description: String to filter records by across specified search fields
-        search_fields:
-          type: array
-          items:
-            type: string
-          description: Field API names to run the search against
-        include_fields:
-          type: array
-          items:
-            type: string
-          description: Field API names to include in the response
-        count:
-          type: integer
-          default: 1000
-          description: Number of records to return
-        start:
-          type: integer
-          default: 0
-          description: Offset for pagination
-        order_by:
-          type: string
-          description: Field API name to order results by
-        filters:
-          type: array
-          items:
-            $ref: '#/components/schemas/SearchFilter'
+          description: Record system identifier
+      additionalProperties: true
+    RecordUpdateRequest:
+      type: object
+      description: Key-value pairs for fields to update. Only specified fields are modified.
+      additionalProperties: true
     RecordListResponse:
       type: object
       properties:
@@ -324,21 +308,37 @@ components:
           items:
             type: string
           description: SIDs of updated records
-    Record:
+    SearchRequest:
       type: object
       properties:
-        sid:
+        search:
           type: string
-          description: Record system identifier
-      additionalProperties: true
-    RecordCreateRequest:
-      type: object
-      description: Key-value pairs where keys are field API names and values are the field values. Optionally include include_fields to filter the response.
-      additionalProperties: true
-    RecordUpdateRequest:
-      type: object
-      description: Key-value pairs for fields to update. Only specified fields are modified.
-      additionalProperties: true
+          description: String to filter records by across specified search fields
+        search_fields:
+          type: array
+          items:
+            type: string
+          description: Field API names to run the search against
+        include_fields:
+          type: array
+          items:
+            type: string
+          description: Field API names to include in the response
+        count:
+          type: integer
+          default: 1000
+          description: Number of records to return
+        start:
+          type: integer
+          default: 0
+          description: Offset for pagination
+        order_by:
+          type: string
+          description: Field API name to order results by
+        filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/SearchFilter'
   securitySchemes:
     IntegrationKey:
       type: apiKey
