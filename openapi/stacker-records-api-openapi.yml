@@ -256,10 +256,6 @@ paths:
                 $ref: '#/components/schemas/BulkUpsertResponse'
 components:
   schemas:
-    RecordCreateRequest:
-      type: object
-      description: Key-value pairs where keys are field API names and values are the field values. Optionally include include_fields to filter the response.
-      additionalProperties: true
     Record:
       type: object
       properties:
@@ -267,23 +263,6 @@ components:
           type: string
           description: Record system identifier
       additionalProperties: true
-    RecordUpdateRequest:
-      type: object
-      description: Key-value pairs for fields to update. Only specified fields are modified.
-      additionalProperties: true
-    RecordListResponse:
-      type: object
-      properties:
-        records:
-          type: array
-          items:
-            $ref: '#/components/schemas/Record'
-        total:
-          type: integer
-        count:
-          type: integer
-        start:
-          type: integer
     SearchFilter:
       type: object
       properties:
@@ -295,19 +274,6 @@ components:
           description: Comparison operator (e.g., eq, neq, contains, gt, lt)
         value:
           description: Value to compare against
-    BulkUpsertResponse:
-      type: object
-      properties:
-        created:
-          type: array
-          items:
-            type: string
-          description: SIDs of created records
-        updated:
-          type: array
-          items:
-            type: string
-          description: SIDs of updated records
     SearchRequest:
       type: object
       properties:
@@ -339,6 +305,40 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SearchFilter'
+    RecordListResponse:
+      type: object
+      properties:
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/Record'
+        total:
+          type: integer
+        count:
+          type: integer
+        start:
+          type: integer
+    RecordUpdateRequest:
+      type: object
+      description: Key-value pairs for fields to update. Only specified fields are modified.
+      additionalProperties: true
+    BulkUpsertResponse:
+      type: object
+      properties:
+        created:
+          type: array
+          items:
+            type: string
+          description: SIDs of created records
+        updated:
+          type: array
+          items:
+            type: string
+          description: SIDs of updated records
+    RecordCreateRequest:
+      type: object
+      description: Key-value pairs where keys are field API names and values are the field values. Optionally include include_fields to filter the response.
+      additionalProperties: true
   securitySchemes:
     IntegrationKey:
       type: apiKey
