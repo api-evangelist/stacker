@@ -111,6 +111,12 @@ apis:
   - type: Authentication
     url: https://docs.stackerhq.com/stacker/ai-and-automations/open-api-overview/authentication
 common:
+  - type: Plans
+    url: plans/stacker-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/stacker-rate-limits.yml
+  - type: FinOps
+    url: finops/stacker-finops.yml
   - type: AgenticAccess
     url: agentic-access/stacker-agentic-access.yml
   - type: DomainSecurity
