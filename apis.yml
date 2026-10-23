@@ -111,6 +111,8 @@ apis:
   - type: Authentication
     url: https://docs.stackerhq.com/stacker/ai-and-automations/open-api-overview/authentication
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/stacker/overview
   - type: Plans
     url: plans/stacker-plans-pricing.yml
   - type: RateLimits
