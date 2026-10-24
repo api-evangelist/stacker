@@ -1,123 +1,140 @@
 {
+  "info": {
+    "_postman_id": "94e5f28b-baef-48e8-a47c-98b3508fb123",
+    "name": "Stacker Hello API",
+    "description": "The Stacker API provides programmatic access to objects, records, accounts, and stacks within the Stacker no-code platform. It enables external integrations, automation workflows, and data operations across Stacker applications. Authentication uses an integration key passed via the X-Integration-Key request header.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:46:07.000Z",
+    "updatedAt": "2026-10-22T01:46:07.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-94e5f28b-baef-48e8-a47c-98b3508fb123"
+  },
   "item": [
     {
-      "id": "86fcbbad-94e7-4520-ad8e-96a99cbee0af",
-      "name": "Hello",
-      "description": {
-        "content": "Health check and connectivity test",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "c138e6b1-bc23-458b-a780-e1fd61dd5a65",
-          "name": "Hello World",
-          "request": {
-            "name": "Hello World",
-            "description": {
-              "content": "Health check endpoint. Does not require Account ID header.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "external",
-                "hello",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "X-Integration-Key"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "external",
+          "item": [
             {
-              "id": "889d127c-e275-43f9-b7cb-e5bac9742e46",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "external",
-                    "hello",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Integration-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "hello",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Hello World",
+                  "id": "3549b2b1-75fd-4a45-8ab9-f4222ce672dc",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "X-Integration-Key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/external/hello/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "external",
+                        "hello",
+                        ""
+                      ]
+                    },
+                    "description": "Health check endpoint. Does not require Account ID header."
+                  },
+                  "response": [
+                    {
+                      "id": "ce18bf6e-6b9d-46aa-8544-0b991996c4c5",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Integration-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/external/hello/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "external",
+                            "hello",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:46:07.000Z",
+                      "updatedAt": "2026-10-22T01:46:07.000Z",
+                      "uid": "35240-ce18bf6e-6b9d-46aa-8544-0b991996c4c5"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:46:07.000Z",
+                  "updatedAt": "2026-10-22T01:46:07.000Z",
+                  "uid": "35240-3549b2b1-75fd-4a45-8ab9-f4222ce672dc"
                 }
               ],
-              "body": "{\n  \"message\": \"hello\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "bc53c748-0f7a-421b-9b54-7648af4fa398",
+              "createdAt": "2026-10-22T01:46:07.000Z",
+              "updatedAt": "2026-10-22T01:46:07.000Z",
+              "uid": "35240-bc53c748-0f7a-421b-9b54-7648af4fa398"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "e546dc28-b5e5-4295-9ffe-0ea6b0574aea",
+          "createdAt": "2026-10-22T01:46:07.000Z",
+          "updatedAt": "2026-10-22T01:46:07.000Z",
+          "uid": "35240-e546dc28-b5e5-4295-9ffe-0ea6b0574aea"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.go.stackerhq.com",
-      "key": "baseUrl"
+      "id": "42696266-34ed-46a5-80bc-c05cea09f36e",
+      "createdAt": "2026-10-22T01:46:07.000Z",
+      "updatedAt": "2026-10-22T01:46:07.000Z",
+      "uid": "35240-42696266-34ed-46a5-80bc-c05cea09f36e"
     }
   ],
   "auth": {
@@ -125,25 +142,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "X-Integration-Key"
+        "value": "X-Integration-Key",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "6871605a-4d57-49a1-8df1-5812edc288c7",
-    "name": "Stacker Accounts Hello API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Stacker API provides programmatic access to objects, records, accounts, and stacks within the Stacker no-code platform. It enables external integrations, automation workflows, and data operations across Stacker applications. Authentication uses an integration key passed via the X-Integration-Key request header.",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.go.stackerhq.com"
     }
-  }
+  ]
 }

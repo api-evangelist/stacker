@@ -1,1023 +1,1048 @@
 {
+  "info": {
+    "_postman_id": "a396b7c6-7862-48f1-841c-0e5d29f90c3e",
+    "name": "Stacker Records API",
+    "description": "The Stacker API provides programmatic access to objects, records, accounts, and stacks within the Stacker no-code platform. It enables external integrations, automation workflows, and data operations across Stacker applications. Authentication uses an integration key passed via the X-Integration-Key request header.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:46:17.000Z",
+    "updatedAt": "2026-10-22T01:46:18.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a396b7c6-7862-48f1-841c-0e5d29f90c3e"
+  },
   "item": [
     {
-      "id": "c9c06272-e747-4075-94f4-835193e6686b",
-      "name": "Records",
-      "description": {
-        "content": "CRUD operations on records within an object",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "0ee8c67a-01aa-4f66-b113-4b69c294d2db",
-          "name": "Search Records",
-          "request": {
-            "name": "Search Records",
-            "description": {
-              "content": "Returns a paginated list of records within the specified object. Supports filtering, sorting, field selection, and full-text search. Returns JSON by default; set Accept: text/csv to receive CSV output.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "external",
-                "objects",
-                ":object_sid",
-                "search",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "object_sid",
-                  "description": "(Required) The object SID"
-                }
-              ]
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) ",
-                "key": "X-Account-Id",
-                "value": "<string>"
-              },
-              {
-                "disabled": false,
-                "description": "(Required) ",
-                "key": "X-Stack-Id",
-                "value": "<string>"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "X-Integration-Key"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"search\": \"<string>\",\n  \"search_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"include_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"count\": 1000,\n  \"start\": 0,\n  \"order_by\": \"<string>\",\n  \"filters\": [\n    {\n      \"target\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": {}\n    },\n    {\n      \"target\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": {}\n    }\n  ]\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "external",
+          "item": [
             {
-              "id": "3ea0777a-3a55-478e-9874-bfe3972c478d",
-              "name": "List of records",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "external",
-                    "objects",
-                    ":object_sid",
-                    "search",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "object_sid",
-                      "description": "(Required) The object SID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Integration-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) ",
-                    "key": "X-Account-Id",
-                    "value": "<string>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) ",
-                    "key": "X-Stack-Id",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"search\": \"<string>\",\n  \"search_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"include_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"count\": 1000,\n  \"start\": 0,\n  \"order_by\": \"<string>\",\n  \"filters\": [\n    {\n      \"target\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": {}\n    },\n    {\n      \"target\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": {}\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "objects",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "{object_sid}",
+                  "item": [
+                    {
+                      "name": "search",
+                      "item": [
+                        {
+                          "name": "Search Records",
+                          "id": "2c9821ee-0f9d-4138-802d-1185af68f561",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "X-Integration-Key",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) ",
+                                "key": "X-Account-Id",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "(Required) ",
+                                "key": "X-Stack-Id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"search\": \"<string>\",\n  \"search_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"include_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"count\": 1000,\n  \"start\": 0,\n  \"order_by\": \"<string>\",\n  \"filters\": [\n    {\n      \"target\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": {\n        \"description\": \"Value to compare against\"\n      }\n    },\n    {\n      \"target\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": {\n        \"description\": \"Value to compare against\"\n      }\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/external/objects/:object_sid/search/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "external",
+                                "objects",
+                                ":object_sid",
+                                "search",
+                                ""
+                              ],
+                              "variable": [
+                                {
+                                  "id": "a581dc57-d8e0-4357-ba20-acc981621129",
+                                  "key": "object_sid",
+                                  "value": "<string>",
+                                  "description": "(Required) The object SID"
+                                }
+                              ]
+                            },
+                            "description": "Returns a paginated list of records within the specified object. Supports filtering, sorting, field selection, and full-text search. Returns JSON by default; set Accept: text/csv to receive CSV output."
+                          },
+                          "response": [
+                            {
+                              "id": "c37ef110-8636-4ae9-bb9b-5725b6e39a43",
+                              "name": "List of records",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "(Required) ",
+                                    "key": "X-Account-Id",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "description": "(Required) ",
+                                    "key": "X-Stack-Id",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "X-Integration-Key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"search\": \"<string>\",\n  \"search_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"include_fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"count\": 1000,\n  \"start\": 0,\n  \"order_by\": \"<string>\",\n  \"filters\": [\n    {\n      \"target\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": {\n        \"description\": \"Value to compare against\"\n      }\n    },\n    {\n      \"target\": \"<string>\",\n      \"operation\": \"<string>\",\n      \"value\": {\n        \"description\": \"Value to compare against\"\n      }\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/external/objects/:object_sid/search/",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "external",
+                                    "objects",
+                                    ":object_sid",
+                                    "search",
+                                    ""
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "object_sid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"records\": [\n    {\n      \"sid\": \"<string>\",\n      \"nostrud_6\": 79944734.05240151,\n      \"qui_54d\": \"eu occaecat nulla elit\"\n    },\n    {\n      \"sid\": \"<string>\",\n      \"deserunt_f\": true\n    }\n  ],\n  \"total\": \"<integer>\",\n  \"count\": \"<integer>\",\n  \"start\": \"<integer>\"\n}",
+                              "createdAt": "2026-10-22T01:46:18.000Z",
+                              "updatedAt": "2026-10-22T01:46:18.000Z",
+                              "uid": "35240-c37ef110-8636-4ae9-bb9b-5725b6e39a43"
+                            }
+                          ],
+                          "createdAt": "2026-10-22T01:46:18.000Z",
+                          "updatedAt": "2026-10-22T01:46:18.000Z",
+                          "uid": "35240-2c9821ee-0f9d-4138-802d-1185af68f561"
+                        }
+                      ],
+                      "id": "a28a7b43-5224-449a-8557-dcf4973484b3",
+                      "createdAt": "2026-10-22T01:46:18.000Z",
+                      "updatedAt": "2026-10-22T01:46:18.000Z",
+                      "uid": "35240-a28a7b43-5224-449a-8557-dcf4973484b3"
+                    },
+                    {
+                      "name": "records",
+                      "item": [
+                        {
+                          "name": "{record_sid}",
+                          "item": [
+                            {
+                              "name": "Get Record",
+                              "id": "f1d8f6f5-a3da-42c2-a250-61ae295e2ccd",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "apikey",
+                                  "apikey": [
+                                    {
+                                      "key": "key",
+                                      "value": "X-Integration-Key",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "value",
+                                      "value": "{{apiKey}}",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "in",
+                                      "value": "header",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "(Required) ",
+                                    "key": "X-Account-Id",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "description": "(Required) ",
+                                    "key": "X-Stack-Id",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/external/objects/:object_sid/records/:record_sid/?include_fields=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "external",
+                                    "objects",
+                                    ":object_sid",
+                                    "records",
+                                    ":record_sid",
+                                    ""
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "JSON array string of field API names to include in response",
+                                      "key": "include_fields",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "a99d0381-716d-4760-8ee0-ae0585fa69e1",
+                                      "key": "object_sid",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "697783c2-73d8-44c5-ac6c-f4ecee660f09",
+                                      "key": "record_sid",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Returns a single record by its SID."
+                              },
+                              "response": [
+                                {
+                                  "id": "298117a7-de48-427e-91f0-1d56ae57daa4",
+                                  "name": "Record object",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "(Required) ",
+                                        "key": "X-Account-Id",
+                                        "value": "<string>"
+                                      },
+                                      {
+                                        "description": "(Required) ",
+                                        "key": "X-Stack-Id",
+                                        "value": "<string>"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "X-Integration-Key",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/external/objects/:object_sid/records/:record_sid/?include_fields=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "external",
+                                        "objects",
+                                        ":object_sid",
+                                        "records",
+                                        ":record_sid",
+                                        ""
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "JSON array string of field API names to include in response",
+                                          "key": "include_fields",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "object_sid"
+                                        },
+                                        {
+                                          "key": "record_sid"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"sid\": \"<string>\",\n  \"officia0\": true,\n  \"ex_57\": -37185047,\n  \"velit0a\": true\n}",
+                                  "createdAt": "2026-10-22T01:46:18.000Z",
+                                  "updatedAt": "2026-10-22T01:46:18.000Z",
+                                  "uid": "35240-298117a7-de48-427e-91f0-1d56ae57daa4"
+                                }
+                              ],
+                              "createdAt": "2026-10-22T01:46:18.000Z",
+                              "updatedAt": "2026-10-22T01:46:18.000Z",
+                              "uid": "35240-f1d8f6f5-a3da-42c2-a250-61ae295e2ccd"
+                            },
+                            {
+                              "name": "Update Record",
+                              "id": "e3c8fa22-c0ef-49c1-9847-597558d92401",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "apikey",
+                                  "apikey": [
+                                    {
+                                      "key": "key",
+                                      "value": "X-Integration-Key",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "value",
+                                      "value": "{{apiKey}}",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "in",
+                                      "value": "header",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "description": "(Required) ",
+                                    "key": "X-Account-Id",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "description": "(Required) ",
+                                    "key": "X-Stack-Id",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"anim65b\": 84714533.59537101\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/external/objects/:object_sid/records/:record_sid/",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "external",
+                                    "objects",
+                                    ":object_sid",
+                                    "records",
+                                    ":record_sid",
+                                    ""
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "5704fd89-661b-48ed-b895-16586afd9a68",
+                                      "key": "object_sid",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "e9ae7cd5-7341-4f02-b704-fe0c6d60aca1",
+                                      "key": "record_sid",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Partially updates a record. Only provided fields are updated."
+                              },
+                              "response": [
+                                {
+                                  "id": "b79b372d-c9ec-40fd-89f3-6eec2c07793a",
+                                  "name": "Updated record",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "description": "(Required) ",
+                                        "key": "X-Account-Id",
+                                        "value": "<string>"
+                                      },
+                                      {
+                                        "description": "(Required) ",
+                                        "key": "X-Stack-Id",
+                                        "value": "<string>"
+                                      },
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "X-Integration-Key",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"anim65b\": 84714533.59537101\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/external/objects/:object_sid/records/:record_sid/",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "external",
+                                        "objects",
+                                        ":object_sid",
+                                        "records",
+                                        ":record_sid",
+                                        ""
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "object_sid"
+                                        },
+                                        {
+                                          "key": "record_sid"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"sid\": \"<string>\",\n  \"officia0\": true,\n  \"ex_57\": -37185047,\n  \"velit0a\": true\n}",
+                                  "createdAt": "2026-10-22T01:46:18.000Z",
+                                  "updatedAt": "2026-10-22T01:46:18.000Z",
+                                  "uid": "35240-b79b372d-c9ec-40fd-89f3-6eec2c07793a"
+                                }
+                              ],
+                              "createdAt": "2026-10-22T01:46:18.000Z",
+                              "updatedAt": "2026-10-22T01:46:18.000Z",
+                              "uid": "35240-e3c8fa22-c0ef-49c1-9847-597558d92401"
+                            },
+                            {
+                              "name": "Delete Record",
+                              "id": "4b4e85de-cc42-487f-86a0-9bcedf17de37",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "apikey",
+                                  "apikey": [
+                                    {
+                                      "key": "key",
+                                      "value": "X-Integration-Key",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "value",
+                                      "value": "{{apiKey}}",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "in",
+                                      "value": "header",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "description": "(Required) ",
+                                    "key": "X-Account-Id",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "description": "(Required) ",
+                                    "key": "X-Stack-Id",
+                                    "value": "<string>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/external/objects/:object_sid/records/:record_sid/",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "external",
+                                    "objects",
+                                    ":object_sid",
+                                    "records",
+                                    ":record_sid",
+                                    ""
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "f81d1c50-d43d-40e3-b043-90282b6f6d59",
+                                      "key": "object_sid",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "ce6c39cb-af82-4d1e-9c7e-eeab5c379429",
+                                      "key": "record_sid",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Deletes a record by its SID."
+                              },
+                              "response": [
+                                {
+                                  "id": "4c5bb0d3-d46c-440a-9321-d701187ffd9f",
+                                  "name": "Record deleted",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "description": "(Required) ",
+                                        "key": "X-Account-Id",
+                                        "value": "<string>"
+                                      },
+                                      {
+                                        "description": "(Required) ",
+                                        "key": "X-Stack-Id",
+                                        "value": "<string>"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "X-Integration-Key",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/external/objects/:object_sid/records/:record_sid/",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "external",
+                                        "objects",
+                                        ":object_sid",
+                                        "records",
+                                        ":record_sid",
+                                        ""
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "object_sid"
+                                        },
+                                        {
+                                          "key": "record_sid"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "No Content",
+                                  "code": 204,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-22T01:46:18.000Z",
+                                  "updatedAt": "2026-10-22T01:46:18.000Z",
+                                  "uid": "35240-4c5bb0d3-d46c-440a-9321-d701187ffd9f"
+                                }
+                              ],
+                              "createdAt": "2026-10-22T01:46:18.000Z",
+                              "updatedAt": "2026-10-22T01:46:18.000Z",
+                              "uid": "35240-4b4e85de-cc42-487f-86a0-9bcedf17de37"
+                            }
+                          ],
+                          "id": "c276cf0f-fbb0-418f-83b0-c45f6096d195",
+                          "createdAt": "2026-10-22T01:46:18.000Z",
+                          "updatedAt": "2026-10-22T01:46:18.000Z",
+                          "uid": "35240-c276cf0f-fbb0-418f-83b0-c45f6096d195"
+                        },
+                        {
+                          "name": "Create Record",
+                          "id": "a5a5d5ac-1aa3-47fc-9249-4ab3923922ef",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "X-Integration-Key",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) ",
+                                "key": "X-Account-Id",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "(Required) ",
+                                "key": "X-Stack-Id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"nulla_2\": \"aliquip reprehenderit\",\n  \"aliquipa_5\": false,\n  \"culpa_6\": 59421443\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/external/objects/:object_sid/records/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "external",
+                                "objects",
+                                ":object_sid",
+                                "records",
+                                ""
+                              ],
+                              "variable": [
+                                {
+                                  "id": "b496188a-22c8-460b-b6df-0656ef526449",
+                                  "key": "object_sid",
+                                  "value": "<string>",
+                                  "description": "(Required) The object SID"
+                                }
+                              ]
+                            },
+                            "description": "Creates a new record in the specified object."
+                          },
+                          "response": [
+                            {
+                              "id": "2dd2677e-e557-4d61-918e-a733c133c043",
+                              "name": "Created record",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "(Required) ",
+                                    "key": "X-Account-Id",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "description": "(Required) ",
+                                    "key": "X-Stack-Id",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "X-Integration-Key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"nulla_2\": \"aliquip reprehenderit\",\n  \"aliquipa_5\": false,\n  \"culpa_6\": 59421443\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/external/objects/:object_sid/records/",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "external",
+                                    "objects",
+                                    ":object_sid",
+                                    "records",
+                                    ""
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "object_sid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Created",
+                              "code": 201,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"sid\": \"<string>\",\n  \"officia0\": true,\n  \"ex_57\": -37185047,\n  \"velit0a\": true\n}",
+                              "createdAt": "2026-10-22T01:46:18.000Z",
+                              "updatedAt": "2026-10-22T01:46:18.000Z",
+                              "uid": "35240-2dd2677e-e557-4d61-918e-a733c133c043"
+                            }
+                          ],
+                          "createdAt": "2026-10-22T01:46:18.000Z",
+                          "updatedAt": "2026-10-22T01:46:18.000Z",
+                          "uid": "35240-a5a5d5ac-1aa3-47fc-9249-4ab3923922ef"
+                        }
+                      ],
+                      "id": "df6b2b33-546d-48c2-80e8-10e4ebc5cb44",
+                      "createdAt": "2026-10-22T01:46:18.000Z",
+                      "updatedAt": "2026-10-22T01:46:18.000Z",
+                      "uid": "35240-df6b2b33-546d-48c2-80e8-10e4ebc5cb44"
+                    },
+                    {
+                      "name": "bulk-records",
+                      "item": [
+                        {
+                          "name": "Bulk Upsert Records",
+                          "id": "6eaa45c3-7366-47a6-8656-6527bae0d197",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "X-Integration-Key",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) ",
+                                "key": "X-Account-Id",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "(Required) ",
+                                "key": "X-Stack-Id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "[\n  {\n    \"aute_8\": -29625449,\n    \"amet4\": 38681537.43528816\n  },\n  {\n    \"culpaf\": false,\n    \"sintfa\": false,\n    \"deserunt7b\": 11120563,\n    \"consequatab\": 77155863\n  }\n]",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/external/objects/:object_sid/bulk-records/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "external",
+                                "objects",
+                                ":object_sid",
+                                "bulk-records",
+                                ""
+                              ],
+                              "variable": [
+                                {
+                                  "id": "42f6bbc5-0df1-48a9-a5d7-d961536fee91",
+                                  "key": "object_sid",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Creates and updates up to 1000 records in a single request. Each record is provided as a JSON object with field API names as keys."
+                          },
+                          "response": [
+                            {
+                              "id": "41bb8bc8-42db-4291-97fc-f925c9be5cdf",
+                              "name": "Bulk operation result",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "(Required) ",
+                                    "key": "X-Account-Id",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "description": "(Required) ",
+                                    "key": "X-Stack-Id",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "X-Integration-Key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "[\n  {\n    \"aute_8\": -29625449,\n    \"amet4\": 38681537.43528816\n  },\n  {\n    \"culpaf\": false,\n    \"sintfa\": false,\n    \"deserunt7b\": 11120563,\n    \"consequatab\": 77155863\n  }\n]",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/external/objects/:object_sid/bulk-records/",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "external",
+                                    "objects",
+                                    ":object_sid",
+                                    "bulk-records",
+                                    ""
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "object_sid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"created\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"updated\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "createdAt": "2026-10-22T01:46:18.000Z",
+                              "updatedAt": "2026-10-22T01:46:18.000Z",
+                              "uid": "35240-41bb8bc8-42db-4291-97fc-f925c9be5cdf"
+                            }
+                          ],
+                          "createdAt": "2026-10-22T01:46:18.000Z",
+                          "updatedAt": "2026-10-22T01:46:18.000Z",
+                          "uid": "35240-6eaa45c3-7366-47a6-8656-6527bae0d197"
+                        }
+                      ],
+                      "id": "cc232933-bfd2-4564-83aa-233b7abafb80",
+                      "createdAt": "2026-10-22T01:46:18.000Z",
+                      "updatedAt": "2026-10-22T01:46:18.000Z",
+                      "uid": "35240-cc232933-bfd2-4564-83aa-233b7abafb80"
+                    }
+                  ],
+                  "id": "74a42720-0753-4243-8697-1c21ab8456a6",
+                  "createdAt": "2026-10-22T01:46:18.000Z",
+                  "updatedAt": "2026-10-22T01:46:18.000Z",
+                  "uid": "35240-74a42720-0753-4243-8697-1c21ab8456a6"
                 }
               ],
-              "body": "{\n  \"records\": [\n    {\n      \"sid\": \"string\"\n    },\n    {\n      \"sid\": \"string\",\n      \"key_0\": 2423\n    }\n  ],\n  \"total\": 3376,\n  \"count\": 5997,\n  \"start\": 9240\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "6233ddab-08ad-4ba1-a952-fb1bbc12d0da",
+              "createdAt": "2026-10-22T01:46:18.000Z",
+              "updatedAt": "2026-10-22T01:46:18.000Z",
+              "uid": "35240-6233ddab-08ad-4ba1-a952-fb1bbc12d0da"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "3e72f31a-4865-4aec-9a43-2d2dedbba8c2",
-          "name": "Create Record",
-          "request": {
-            "name": "Create Record",
-            "description": {
-              "content": "Creates a new record in the specified object.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "external",
-                "objects",
-                ":object_sid",
-                "records",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "object_sid",
-                  "description": "(Required) The object SID"
-                }
-              ]
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) ",
-                "key": "X-Account-Id",
-                "value": "<string>"
-              },
-              {
-                "disabled": false,
-                "description": "(Required) ",
-                "key": "X-Stack-Id",
-                "value": "<string>"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "X-Integration-Key"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"key_0\": 1064.107930503765\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "cf67f0f9-1d95-45a9-82c4-d822a0686083",
-              "name": "Created record",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "external",
-                    "objects",
-                    ":object_sid",
-                    "records",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "object_sid",
-                      "description": "(Required) The object SID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Integration-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) ",
-                    "key": "X-Account-Id",
-                    "value": "<string>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) ",
-                    "key": "X-Stack-Id",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"key_0\": 8450,\n  \"key_1\": true\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"sid\": \"string\",\n  \"key_0\": 184,\n  \"key_1\": 925,\n  \"key_2\": false\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "159c549d-0bb8-40cd-a300-e41e5efa7242",
-          "name": "Get Record",
-          "request": {
-            "name": "Get Record",
-            "description": {
-              "content": "Returns a single record by its SID.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "external",
-                "objects",
-                ":object_sid",
-                "records",
-                ":record_sid",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "include_fields",
-                  "value": "<string>",
-                  "description": "JSON array string of field API names to include in response"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "object_sid",
-                  "description": "(Required) "
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "record_sid",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) ",
-                "key": "X-Account-Id",
-                "value": "<string>"
-              },
-              {
-                "disabled": false,
-                "description": "(Required) ",
-                "key": "X-Stack-Id",
-                "value": "<string>"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "X-Integration-Key"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "938d1265-02ae-4521-a47c-a0370159c0ba",
-              "name": "Record object",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "external",
-                    "objects",
-                    ":object_sid",
-                    "records",
-                    ":record_sid",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "include_fields",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "object_sid",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "record_sid",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Integration-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) ",
-                    "key": "X-Account-Id",
-                    "value": "<string>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) ",
-                    "key": "X-Stack-Id",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"sid\": \"string\",\n  \"key_0\": 184,\n  \"key_1\": 925,\n  \"key_2\": false\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "17411d0b-dfda-4946-92bb-678d470d9d95",
-          "name": "Update Record",
-          "request": {
-            "name": "Update Record",
-            "description": {
-              "content": "Partially updates a record. Only provided fields are updated.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "external",
-                "objects",
-                ":object_sid",
-                "records",
-                ":record_sid",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "object_sid",
-                  "description": "(Required) "
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "record_sid",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) ",
-                "key": "X-Account-Id",
-                "value": "<string>"
-              },
-              {
-                "disabled": false,
-                "description": "(Required) ",
-                "key": "X-Stack-Id",
-                "value": "<string>"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PATCH",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "X-Integration-Key"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"key_0\": \"string\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "dd6924bc-e10b-45d1-ab9e-4590fa545872",
-              "name": "Updated record",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "external",
-                    "objects",
-                    ":object_sid",
-                    "records",
-                    ":record_sid",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "object_sid",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "record_sid",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Integration-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) ",
-                    "key": "X-Account-Id",
-                    "value": "<string>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) ",
-                    "key": "X-Stack-Id",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"key_0\": \"string\",\n  \"key_1\": 9394\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"sid\": \"string\",\n  \"key_0\": 184,\n  \"key_1\": 925,\n  \"key_2\": false\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "bb2b67cb-3a7e-469d-bafb-92799bae4a64",
-          "name": "Delete Record",
-          "request": {
-            "name": "Delete Record",
-            "description": {
-              "content": "Deletes a record by its SID.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "external",
-                "objects",
-                ":object_sid",
-                "records",
-                ":record_sid",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "object_sid",
-                  "description": "(Required) "
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "record_sid",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) ",
-                "key": "X-Account-Id",
-                "value": "<string>"
-              },
-              {
-                "disabled": false,
-                "description": "(Required) ",
-                "key": "X-Stack-Id",
-                "value": "<string>"
-              }
-            ],
-            "method": "DELETE",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "X-Integration-Key"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "e3e025a3-5e10-4400-96e3-c5ecaea9c6cf",
-              "name": "Record deleted",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "external",
-                    "objects",
-                    ":object_sid",
-                    "records",
-                    ":record_sid",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "object_sid",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "record_sid",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Integration-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) ",
-                    "key": "X-Account-Id",
-                    "value": "<string>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) ",
-                    "key": "X-Stack-Id",
-                    "value": "<string>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "cdf1560a-9324-4d46-8349-194f0db9fe6c",
-          "name": "Bulk Upsert Records",
-          "request": {
-            "name": "Bulk Upsert Records",
-            "description": {
-              "content": "Creates and updates up to 1000 records in a single request. Each record is provided as a JSON object with field API names as keys.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "external",
-                "objects",
-                ":object_sid",
-                "bulk-records",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "object_sid",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) ",
-                "key": "X-Account-Id",
-                "value": "<string>"
-              },
-              {
-                "disabled": false,
-                "description": "(Required) ",
-                "key": "X-Stack-Id",
-                "value": "<string>"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "X-Integration-Key"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "[\n  {\n    \"key_0\": 8358.775896199591\n  },\n  {\n    \"key_0\": \"string\"\n  }\n]",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "dcb64c86-9f7c-427a-8bfc-4cb77ee45fbf",
-              "name": "Bulk operation result",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "external",
-                    "objects",
-                    ":object_sid",
-                    "bulk-records",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "object_sid",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Integration-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) ",
-                    "key": "X-Account-Id",
-                    "value": "<string>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) ",
-                    "key": "X-Stack-Id",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "[\n  {\n    \"key_0\": 4726,\n    \"key_1\": \"string\",\n    \"key_2\": 6892\n  },\n  {\n    \"key_0\": \"string\",\n    \"key_1\": 9259.25883856216,\n    \"key_2\": \"string\"\n  }\n]",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"created\": [\n    \"string\",\n    \"string\"\n  ],\n  \"updated\": [\n    \"string\",\n    \"string\"\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "92e92b1c-062d-4896-b6db-399d2a2dd9fc",
+          "createdAt": "2026-10-22T01:46:18.000Z",
+          "updatedAt": "2026-10-22T01:46:18.000Z",
+          "uid": "35240-92e92b1c-062d-4896-b6db-399d2a2dd9fc"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.go.stackerhq.com",
-      "key": "baseUrl"
+      "id": "919506e4-3791-4ffb-8c79-7f941383e48d",
+      "createdAt": "2026-10-22T01:46:18.000Z",
+      "updatedAt": "2026-10-22T01:46:18.000Z",
+      "uid": "35240-919506e4-3791-4ffb-8c79-7f941383e48d"
     }
   ],
   "auth": {
@@ -1025,25 +1050,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "X-Integration-Key"
+        "value": "X-Integration-Key",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "563ca54c-c126-4be9-981e-a49de7bd7ad4",
-    "name": "Stacker Accounts Records API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Stacker API provides programmatic access to objects, records, accounts, and stacks within the Stacker no-code platform. It enables external integrations, automation workflows, and data operations across Stacker applications. Authentication uses an integration key passed via the X-Integration-Key request header.",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.go.stackerhq.com"
     }
-  }
+  ]
 }

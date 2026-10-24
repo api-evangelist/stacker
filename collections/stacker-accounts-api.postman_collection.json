@@ -1,123 +1,140 @@
 {
+  "info": {
+    "_postman_id": "b513ea4e-4198-476d-a9f5-edc4e906d1d2",
+    "name": "Stacker Accounts API",
+    "description": "The Stacker API provides programmatic access to objects, records, accounts, and stacks within the Stacker no-code platform. It enables external integrations, automation workflows, and data operations across Stacker applications. Authentication uses an integration key passed via the X-Integration-Key request header.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:46:00.000Z",
+    "updatedAt": "2026-10-22T01:46:01.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b513ea4e-4198-476d-a9f5-edc4e906d1d2"
+  },
   "item": [
     {
-      "id": "8a38fdab-9e26-467b-aa28-ac33b833ca39",
-      "name": "Accounts",
-      "description": {
-        "content": "Manage Stacker accounts",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "707a5972-1f88-42f8-b184-f11f205cfc24",
-          "name": "List Accounts",
-          "request": {
-            "name": "List Accounts",
-            "description": {
-              "content": "Returns a list of accounts accessible by the authenticated integration key. Does not require the X-Account-Id header.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "external",
-                "accounts",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "X-Integration-Key"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "external",
+          "item": [
             {
-              "id": "00641d03-585e-42f3-96ff-3f5721b9b739",
-              "name": "List of accounts",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "external",
-                    "accounts",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Integration-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "accounts",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "List Accounts",
+                  "id": "0fc10199-7f80-4cce-9082-38647d7411b4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "X-Integration-Key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/external/accounts/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "external",
+                        "accounts",
+                        ""
+                      ]
+                    },
+                    "description": "Returns a list of accounts accessible by the authenticated integration key. Does not require the X-Account-Id header."
+                  },
+                  "response": [
+                    {
+                      "id": "dab95426-449b-4952-82b5-6977d851aa63",
+                      "name": "List of accounts",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Integration-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/external/accounts/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "external",
+                            "accounts",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"accounts\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-22T01:46:01.000Z",
+                      "updatedAt": "2026-10-22T01:46:01.000Z",
+                      "uid": "35240-dab95426-449b-4952-82b5-6977d851aa63"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:46:01.000Z",
+                  "updatedAt": "2026-10-22T01:46:01.000Z",
+                  "uid": "35240-0fc10199-7f80-4cce-9082-38647d7411b4"
                 }
               ],
-              "body": "{\n  \"accounts\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "2dee95e2-5dda-4f4c-9604-8feb3679385d",
+              "createdAt": "2026-10-22T01:46:01.000Z",
+              "updatedAt": "2026-10-22T01:46:01.000Z",
+              "uid": "35240-2dee95e2-5dda-4f4c-9604-8feb3679385d"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "1676fd1a-dc87-4db1-aa34-8e8c64a13242",
+          "createdAt": "2026-10-22T01:46:01.000Z",
+          "updatedAt": "2026-10-22T01:46:01.000Z",
+          "uid": "35240-1676fd1a-dc87-4db1-aa34-8e8c64a13242"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.go.stackerhq.com",
-      "key": "baseUrl"
+      "id": "e19e1428-91ff-4fe0-991e-104ff91b0e6c",
+      "createdAt": "2026-10-22T01:46:01.000Z",
+      "updatedAt": "2026-10-22T01:46:01.000Z",
+      "uid": "35240-e19e1428-91ff-4fe0-991e-104ff91b0e6c"
     }
   ],
   "auth": {
@@ -125,25 +142,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "X-Integration-Key"
+        "value": "X-Integration-Key",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "c8481018-45e0-4018-8522-49b70dfcd879",
-    "name": "Stacker Accounts API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Stacker API provides programmatic access to objects, records, accounts, and stacks within the Stacker no-code platform. It enables external integrations, automation workflows, and data operations across Stacker applications. Authentication uses an integration key passed via the X-Integration-Key request header.",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.go.stackerhq.com"
     }
-  }
+  ]
 }

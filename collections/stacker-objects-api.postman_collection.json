@@ -1,291 +1,314 @@
 {
+  "info": {
+    "_postman_id": "b2db768b-aa5f-45f6-8909-235a030881eb",
+    "name": "Stacker Objects API",
+    "description": "The Stacker API provides programmatic access to objects, records, accounts, and stacks within the Stacker no-code platform. It enables external integrations, automation workflows, and data operations across Stacker applications. Authentication uses an integration key passed via the X-Integration-Key request header.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:46:13.000Z",
+    "updatedAt": "2026-10-22T01:46:13.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b2db768b-aa5f-45f6-8909-235a030881eb"
+  },
   "item": [
     {
-      "id": "d24653f9-9454-4501-8d64-67da27919644",
-      "name": "Objects",
-      "description": {
-        "content": "Manage objects (tables) within a stack",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "b9cb4786-f8e9-482a-9cab-0c5ea04bb7ff",
-          "name": "List Objects",
-          "request": {
-            "name": "List Objects",
-            "description": {
-              "content": "Returns the list of objects (tables) associated with the specified account and stack.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "external",
-                "objects",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) The Stacker account ID",
-                "key": "X-Account-Id",
-                "value": "<string>"
-              },
-              {
-                "disabled": false,
-                "description": "(Required) The Stacker stack (application) ID",
-                "key": "X-Stack-Id",
-                "value": "<string>"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "X-Integration-Key"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "external",
+          "item": [
             {
-              "id": "1d4d9978-2d2b-42f5-bc9e-6c17850c8162",
-              "name": "List of objects",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "external",
-                    "objects",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Integration-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) The Stacker account ID",
-                    "key": "X-Account-Id",
-                    "value": "<string>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) The Stacker stack (application) ID",
-                    "key": "X-Stack-Id",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "objects",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"objects\": [\n    {\n      \"sid\": \"string\",\n      \"name\": \"string\",\n      \"api_name\": \"string\"\n    },\n    {\n      \"sid\": \"string\",\n      \"name\": \"string\",\n      \"api_name\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "1a633f62-6b95-4f5c-a4e4-5e4ae480de92",
-          "name": "List Action Buttons",
-          "request": {
-            "name": "List Action Buttons",
-            "description": {
-              "content": "Returns the list of action buttons configured for a given object.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "external",
-                "objects",
-                ":object_sid",
-                "action-buttons",
-                ""
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "object_sid",
-                  "description": "(Required) The object SID"
-                }
-              ]
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) The Stacker account ID",
-                "key": "X-Account-Id",
-                "value": "<string>"
-              },
-              {
-                "disabled": false,
-                "description": "(Required) The Stacker stack ID",
-                "key": "X-Stack-Id",
-                "value": "<string>"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "X-Integration-Key"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "eca79022-fc56-4a55-9ce6-90ebd4287dd2",
-              "name": "List of action buttons",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "external",
-                    "objects",
-                    ":object_sid",
-                    "action-buttons",
-                    ""
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "name": "{object_sid}",
+                  "item": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "object_sid",
-                      "description": "(Required) The object SID"
+                      "name": "action-buttons",
+                      "item": [
+                        {
+                          "name": "List Action Buttons",
+                          "id": "b9fe1335-d87c-4171-b07f-b4252b7cd115",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "X-Integration-Key",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "(Required) The Stacker account ID",
+                                "key": "X-Account-Id",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "(Required) The Stacker stack ID",
+                                "key": "X-Stack-Id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/external/objects/:object_sid/action-buttons/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "external",
+                                "objects",
+                                ":object_sid",
+                                "action-buttons",
+                                ""
+                              ],
+                              "variable": [
+                                {
+                                  "id": "7fdaff77-ad32-458e-baa4-a9215f31268f",
+                                  "key": "object_sid",
+                                  "value": "<string>",
+                                  "description": "(Required) The object SID"
+                                }
+                              ]
+                            },
+                            "description": "Returns the list of action buttons configured for a given object."
+                          },
+                          "response": [
+                            {
+                              "id": "8b13a71b-0e03-4c44-9bd1-cfe709f0ace5",
+                              "name": "List of action buttons",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "(Required) The Stacker account ID",
+                                    "key": "X-Account-Id",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "description": "(Required) The Stacker stack ID",
+                                    "key": "X-Stack-Id",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "X-Integration-Key",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/external/objects/:object_sid/action-buttons/",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "external",
+                                    "objects",
+                                    ":object_sid",
+                                    "action-buttons",
+                                    ""
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "object_sid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"action_buttons\": [\n    {\n      \"sid\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"sid\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-10-22T01:46:14.000Z",
+                              "updatedAt": "2026-10-22T01:46:14.000Z",
+                              "uid": "35240-8b13a71b-0e03-4c44-9bd1-cfe709f0ace5"
+                            }
+                          ],
+                          "createdAt": "2026-10-22T01:46:14.000Z",
+                          "updatedAt": "2026-10-22T01:46:14.000Z",
+                          "uid": "35240-b9fe1335-d87c-4171-b07f-b4252b7cd115"
+                        }
+                      ],
+                      "id": "7a525278-6e32-4e4c-a044-24ca18e484bc",
+                      "createdAt": "2026-10-22T01:46:14.000Z",
+                      "updatedAt": "2026-10-22T01:46:14.000Z",
+                      "uid": "35240-7a525278-6e32-4e4c-a044-24ca18e484bc"
                     }
-                  ]
+                  ],
+                  "id": "6f3a9fac-4155-4880-894a-b997382fe2d2",
+                  "createdAt": "2026-10-22T01:46:14.000Z",
+                  "updatedAt": "2026-10-22T01:46:14.000Z",
+                  "uid": "35240-6f3a9fac-4155-4880-894a-b997382fe2d2"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Integration-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) The Stacker account ID",
-                    "key": "X-Account-Id",
-                    "value": "<string>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) The Stacker stack ID",
-                    "key": "X-Stack-Id",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "List Objects",
+                  "id": "2f7407c8-1414-487a-969a-fbe02fedaafa",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "X-Integration-Key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The Stacker account ID",
+                        "key": "X-Account-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) The Stacker stack (application) ID",
+                        "key": "X-Stack-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/external/objects/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "external",
+                        "objects",
+                        ""
+                      ]
+                    },
+                    "description": "Returns the list of objects (tables) associated with the specified account and stack."
+                  },
+                  "response": [
+                    {
+                      "id": "a0c31a79-bb91-46af-92e7-5b6b765c3b52",
+                      "name": "List of objects",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) The Stacker account ID",
+                            "key": "X-Account-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "(Required) The Stacker stack (application) ID",
+                            "key": "X-Stack-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Integration-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/external/objects/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "external",
+                            "objects",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"objects\": [\n    {\n      \"sid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"api_name\": \"<string>\"\n    },\n    {\n      \"sid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"api_name\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-22T01:46:14.000Z",
+                      "updatedAt": "2026-10-22T01:46:14.000Z",
+                      "uid": "35240-a0c31a79-bb91-46af-92e7-5b6b765c3b52"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:46:14.000Z",
+                  "updatedAt": "2026-10-22T01:46:14.000Z",
+                  "uid": "35240-2f7407c8-1414-487a-969a-fbe02fedaafa"
                 }
               ],
-              "body": "{\n  \"action_buttons\": [\n    {\n      \"sid\": \"string\",\n      \"name\": \"string\"\n    },\n    {\n      \"sid\": \"string\",\n      \"name\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "39366e23-80ce-449f-a247-24554376f89c",
+              "createdAt": "2026-10-22T01:46:14.000Z",
+              "updatedAt": "2026-10-22T01:46:14.000Z",
+              "uid": "35240-39366e23-80ce-449f-a247-24554376f89c"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "b5340bf5-7f22-48c7-9d35-d30ab5426177",
+          "createdAt": "2026-10-22T01:46:14.000Z",
+          "updatedAt": "2026-10-22T01:46:14.000Z",
+          "uid": "35240-b5340bf5-7f22-48c7-9d35-d30ab5426177"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.go.stackerhq.com",
-      "key": "baseUrl"
+      "id": "5cc9f945-54a6-4558-9e5e-96dc86cd43b2",
+      "createdAt": "2026-10-22T01:46:14.000Z",
+      "updatedAt": "2026-10-22T01:46:14.000Z",
+      "uid": "35240-5cc9f945-54a6-4558-9e5e-96dc86cd43b2"
     }
   ],
   "auth": {
@@ -293,25 +316,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "X-Integration-Key"
+        "value": "X-Integration-Key",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "70907619-4ca5-4885-93e6-1f2c3a160c7b",
-    "name": "Stacker Accounts Objects API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Stacker API provides programmatic access to objects, records, accounts, and stacks within the Stacker no-code platform. It enables external integrations, automation workflows, and data operations across Stacker applications. Authentication uses an integration key passed via the X-Integration-Key request header.",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.go.stackerhq.com"
     }
-  }
+  ]
 }
