@@ -1,4 +1,4 @@
-# Stacker (stacker)
+# Stacker
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,62 +66,162 @@
 
 Stacker is a no-code platform that enables organizations to build custom business applications, internal tools, and customer portals on top of their existing data sources — including Airtable, Google Sheets, SQL databases, and Salesforce — without writing code. Its drag-and-drop interface, role-based access controls, and Open API enable teams to create data-driven portals, automate workflows, and integrate with third-party services.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/stacker/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/stacker/refs/heads/main/apis.yml)
+**Areas:** Application Development · Low-Code · No-Code · Portal · Workflow Automation
 
-## Scope
+## Stacker on APIs.io
 
-- **Type:** Index
-- **Access:** 3rd-Party
+Everything profiled for Stacker is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/stacker/](https://apis.io/providers/stacker/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (4)
 
-- Application Development
-- Low-Code
-- No-Code
-- Portals
-- Workflow Automation
+- [Stacker Accounts API](https://apis.io/apis/stacker/stacker-accounts-api/) — Manage Stacker accounts
+- [Stacker Hello API](https://apis.io/apis/stacker/stacker-hello-api/) — Health check and connectivity test
+- [Stacker Objects API](https://apis.io/apis/stacker/stacker-objects-api/) — Manage objects (tables) within a stack
+- [Stacker Records API](https://apis.io/apis/stacker/stacker-records-api/) — CRUD operations on records within an object
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-01-01
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Stacker API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The Stacker API provides programmatic access to objects, records, accounts, and stacks within the Stacker platform. It enables external integrations, automation workflows, and data operations across Stacker applications using token-based authentication.
+- [Stacker Agentic Access](https://apis.io/agentic-access/stacker/stacker-agentic-access/)
 
-- **Human URL:** [https://docs.stackerhq.com/stacker/ai-and-automations/open-api-overview](https://docs.stackerhq.com/stacker/ai-and-automations/open-api-overview)
-- **Base URL:** `https://api.go.stackerhq.com`
+#### JSON Schema (2)
 
-#### Tags
+The data models the API reads and writes.
 
-- No-Code
-- Records
-- Application Development
+- [Stacker Record](https://apis.io/schemas/stacker/stacker-record/)
+- [Stacker Search Request](https://apis.io/schemas/stacker/stacker-search-request/)
 
-#### Properties
+#### JSON Structure (1)
 
-- [Documentation](https://docs.stackerhq.com/stacker/ai-and-automations/open-api-overview)
-- [Authentication](https://docs.stackerhq.com/stacker/ai-and-automations/open-api-overview/authentication)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/stacker/refs/heads/main/openapi/stacker-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/stacker.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/stacker.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Data models expressed in JSON Structure.
 
-## Common Properties
+- [Stacker Record Structure](https://apis.io/json-structure/stacker/stacker-record-structure/)
 
-- [LinkedIn](https://www.linkedin.com/company/stackermedia)
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Stacker Context](https://apis.io/jsonld/stacker/stacker-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Stacker Vocabulary](https://apis.io/vocabularies/stacker/stacker-vocabulary/)
+
+#### Examples (2)
+
+Example requests and responses.
+
+- [Stacker Create Record Example](https://apis.io/examples/stacker/stacker-create-record-example/)
+- [Stacker Search Records Example](https://apis.io/examples/stacker/stacker-search-records-example/)
+
+#### Collections (5)
+
+Postman and Open Collection request collections.
+
+- [Stacker API](https://apis.io/collections/stacker/open-stacker/)
+- [Stacker Accounts API](https://apis.io/collections/stacker/open-stacker-accounts-api/)
+- [Stacker Accounts Hello API](https://apis.io/collections/stacker/open-stacker-hello-api/)
+- [Stacker Accounts Objects API](https://apis.io/collections/stacker/open-stacker-objects-api/)
+- [Stacker Accounts Records API](https://apis.io/collections/stacker/open-stacker-records-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Stacker — jsonschema rules](https://apis.io/rules/stacker/stacker-jsonschema-spectral-rules/)
+- [Stacker API Rules](https://apis.io/rules/stacker/stacker-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Stacker Authentication](https://apis.io/security/stacker/stacker-authentication/)
+- [Stacker Domain Security](https://apis.io/security/stacker/stacker-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Stacker Plans Pricing](https://apis.io/plans/stacker/stacker-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Stacker Rate Limits](https://apis.io/rate-limits/stacker/stacker-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Stacker Finops](https://apis.io/finops/stacker/stacker-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://stacker.ai/)
 - [Documentation](https://docs.stackerhq.com/)
-- [Getting Started](https://docs.stackerhq.com/stacker/ai-and-automations/open-api-overview)
-- [Authentication](https://docs.stackerhq.com/stacker/ai-and-automations/open-api-overview/authentication)
+- [Getting started](https://docs.stackerhq.com/stacker/ai-and-automations/open-api-overview)
 - [Pricing](https://stacker.ai/pricing)
 - [Blog](https://stacker.ai/blog)
-- [Login](https://app.stackerhq.com/)
-- [L L Ms Txt](https://api.go.stackerhq.com/llms.txt)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 37.0** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 54.3 |
+| Contract governance | 9.8 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 35.7 |
+| Access clarity | 25.0 |
+
+**Agent readiness 20.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/stacker/](https://apis.io/providers/stacker/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Stacker: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/stacker/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
